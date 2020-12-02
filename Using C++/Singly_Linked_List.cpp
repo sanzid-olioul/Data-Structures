@@ -41,7 +41,7 @@ public:
         Node<T> *temp;
         temp = new Node<T>;
         temp = this->head;
-        while(temp->next){
+        while(temp){
             std::cout<<temp->Data<<std::endl;
             temp = temp->next;
         }

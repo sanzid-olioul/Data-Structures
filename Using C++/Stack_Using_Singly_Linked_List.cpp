@@ -64,7 +64,7 @@ class Stack{
         Node<T> *temp;
         temp = new Node<T>;
         temp = this->head;
-        while(temp->next){
+        while(temp){
             std::cout<<temp->data<<std::endl;
             temp = temp->next;
         }
@@ -80,6 +80,7 @@ int main()
     st.push(15);
     st.push(25);
     st.push(30);
+    std::cout<<st.pop()<<std::endl;
     std::cout<<st.pop()<<std::endl;
     std::cout<<st.pop()<<std::endl;
     std::cout<<st.pop()<<std::endl;
