@@ -37,7 +37,6 @@ public:
                 tail = temp;
             }
         }
-        std::cout<<data<<" Added"<<std::endl;
     }
     void show(){
         Node<T> *temp;
@@ -57,8 +56,6 @@ public:
             temp = temp->prev;
         }
     }
-
-
 };
 
 
@@ -87,10 +84,5 @@ int main()
     name.show();
     num.revShow();
     name.revShow();
-
-
-
-
-
     return 0;
 }
