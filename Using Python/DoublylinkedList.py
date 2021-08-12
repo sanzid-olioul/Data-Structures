@@ -1,7 +1,11 @@
+from typing import Text
+
+
 class Node:
     def __init__(self,data = None):
         self.data = data
         self.next = None
+        self.previous = None
 
 class LinkedList:
     def __init__(self):
@@ -12,6 +16,7 @@ class LinkedList:
     def append(self,data):
         newNode = Node()
         newNode.data = data
+        newNode.previous = self.tail
         self.tail.next = newNode
         self.tail = newNode
         self.len+=1
@@ -26,7 +31,10 @@ class LinkedList:
         newNode = Node()
         newNode.data = data
         newNode.next = temp.next
+        newNode.previous = temp
         temp.next = newNode
+        temp1 = newNode.next
+        temp1.previous = newNode
         self.len+=1
         return True
 
@@ -45,6 +53,8 @@ class LinkedList:
             temp = temp.next
             if temp.data == data:
                 prev.next = temp.next
+                temp = temp.next
+                temp.previous = prev
                 del temp
                 return True
         return False
@@ -64,6 +74,12 @@ class LinkedList:
             temp = temp.next
             print(temp.data,end=" ")
 
+    def revese_show(self):
+        temp = self.tail
+        while temp.previous !=None:
+            print(temp.data,end=" ")
+            temp = temp.previous 
+
 if __name__ == '__main__' :
 
     lst = LinkedList()
@@ -82,3 +98,16 @@ if __name__ == '__main__' :
     lst.replace(14,7854)
     print()
     lst.show()
+    lst.show()
+    print()
+    lst.revese_show()
+    lst.insert(3,2658)
+    print()
+    lst.show()
+    print()
+    lst.revese_show()
+    lst.remove(32)
+    print()
+    lst.show()
+    print()
+    lst.revese_show()
