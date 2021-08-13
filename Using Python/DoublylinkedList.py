@@ -7,7 +7,7 @@ class Node:
         self.next = None
         self.previous = None
 
-class LinkedList:
+class DoublyLinkedList:
     def __init__(self):
         self.head = Node()
         self.tail = self.head
@@ -82,7 +82,7 @@ class LinkedList:
 
 if __name__ == '__main__' :
 
-    lst = LinkedList()
+    lst = DoublyLinkedList()
     for i in range(5,75,3):
         lst.append(i)
     print(lst.len)

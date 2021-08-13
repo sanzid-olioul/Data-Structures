@@ -3,7 +3,7 @@ class Node:
         self.data = data
         self.next = None
 
-class LinkedList:
+class SinglyLinkedList:
     def __init__(self):
         self.head = Node()
         self.tail = self.head
@@ -66,7 +66,7 @@ class LinkedList:
 
 if __name__ == '__main__' :
 
-    lst = LinkedList()
+    lst = SinglyLinkedList()
     for i in range(5,75,3):
         lst.append(i)
     print(lst.len)
