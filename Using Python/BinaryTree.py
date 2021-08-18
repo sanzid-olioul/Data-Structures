@@ -70,21 +70,73 @@ class BinaryTree:
             self.PostOrderTraversal(root.right)
         print(root.data)
 
+    def search(self,data):
+        newQueue = Queue()
+        newQueue.put(self.root)
+        while not newQueue.empty():
+            root = newQueue.get()
+            if root.data == data:
+                return True
+            if root.left is not None:
+                newQueue.put(root.left)
+            if root.right is not None:
+                newQueue.put(root.right)
+        return False
 
-bt = BinaryTree()
-bt.addChild(5)
-bt.addChild(15)
-bt.addChild(25)
-bt.addChild(35)
-bt.addChild(45)
-bt.addChild(55)
-bt.addChild(65)
-bt.LabelOrderTraversal()
-print()
-bt.PriOrderTraversal()
+    def remove(self,data):
+        newQueue = Queue()
+        newQueue.put(self.root)
+        rmdatand = None
+        lstnd = None
+        while not newQueue.empty():
+            root = newQueue.get()
+            if root.data == data:
+                rmdatand = root
+            lstnd = root
+            print(root.data)
+            if root.left is not None:
+                newQueue.put(root.left)
+            if root.right is not None:
+                newQueue.put(root.right)
+        
+        rmdatand.data = lstnd.data
+        newQueue.put(self.root)
+        while not newQueue.empty():
+            root = newQueue.get()
+            if root.left == lstnd:
+                root.left = None
+                break
+            if root.right == lstnd:
+                root.right = None
+                break
+            if root.left is not None:
+                newQueue.put(root.left)
+            if root.right is not None:
+                newQueue.put(root.right)
 
-print()
-bt.InOrderTraversal()
+    def delete(self):
+        self.root = None
 
-print()
-bt.PostOrderTraversal()
+if __name__ == "__main__":
+    bt = BinaryTree()
+    bt.addChild(5)
+    bt.addChild(15)
+    bt.addChild(25)
+    bt.addChild(35)
+    bt.addChild(45)
+    bt.addChild(55)
+    bt.addChild(65)
+    bt.LabelOrderTraversal()
+    print()
+    bt.PriOrderTraversal()
+
+    print()
+    bt.InOrderTraversal()
+
+    print()
+    bt.PostOrderTraversal()
+
+    bt.remove(25)
+    bt.LabelOrderTraversal()
+    print(bt.search(15))
+    bt.delete()
